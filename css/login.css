@@ -1,0 +1,25 @@
+.form-main-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 50vh 0;
+}
+
+.form-container input{
+    min-width: 50vw;
+    height: 3rem;
+    font-size: 2rem;
+}
+
+.form-container label{
+    font-size: 3rem;
+}
+
+#submit-button {
+    font-size: 2rem;
+    min-width: 20vw;
+    margin: 3rem 0;
+    background-color: lightskyblue;
+    border: 2px black solid;
+    border-radius: 10px;
+    cursor: pointer;
+}

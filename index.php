@@ -41,7 +41,7 @@
         <div class="main-div-principal">
             <h1>Resortes lorem ipsum</h1>
             <p>Esto es información importante lorem ipsum</p>
-            <p class="boton-estilo bg-secundario">Iniciar Sesión</p>
+            <a href="login.php" class="boton-estilo bg-secundario">Iniciar Sesión</a>
         </div>
     </main>
 

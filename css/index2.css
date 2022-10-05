@@ -29,7 +29,19 @@
     border: solid 2px black;
     border-radius: 10px;
     padding: 1rem;
-    display: block;
     cursor: pointer;
     background-color: lightskyblue;
+    color: white;
+    font-size: 2rem;
+}
+
+.boton-estilo:visited{
+    text-decoration: none;
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: lightskyblue;
+    color: white;
+    font-size: 2rem;
 }
