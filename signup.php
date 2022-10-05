@@ -6,18 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
-    <form action="index.php" method="POST">
-        <label for="username">Nombre de usuario</label>
-        <input type="text" name="username">
-        <label for="password">Contraseña</label>
-        <input type="password" name="password">
-        <label for="password-confirmation">Confirmar contraseña</label>
-        <input type="password" name="password-confirmation">
-        <input type="submit" value="Crear Cuenta">
-    </form>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.php" class="logo nav-link">Resortes</a>
+        </nav>
+    </header>
+
+    <div class="form-main-container">
+        <div class="form-container">
+            <form action="index.php" method="POST">
+                <label for="username">Nombre de usuario</label><br>
+                <input type="text" name="username"><br>
+                <label for="password">Contraseña</label><br>
+                <input type="password" name="password"><br>
+                <label for="password-confirmation">Confirmar contraseña</label><br>
+                <input type="password" name="password-confirmation"><br>
+                <input type="submit" value="Crear Cuenta" id="submit-button">
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container">

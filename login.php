@@ -12,7 +12,7 @@
 
     <header class="header">
         <nav class="nav">
-            <a href="" class="logo nav-link">Resortes</a>
+            <a href="index.php" class="logo nav-link">Resortes</a>
         </nav>
     </header>
 
@@ -23,7 +23,7 @@
                 <input type="text" name="username"><br>
                 <label for="password">Contraseña</label><br>
                 <input type="password" name="password"><br>
-                <input type="submit" value="Iniciar Sesión" id="submit-button"><br>
+                <input type="submit" value="Iniciar Sesión" id="submit-button">
             </form>
         </div>
     </div>
