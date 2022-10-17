@@ -1,5 +1,29 @@
+<?php
+
+require 'database.php';
+
+$message = '';
+
+if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':name', $_POST['name']);
+    $stmt->bindParam(':email', $_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $stmt->bindParam(':password', $password);
+
+    if ($stmt->execute()) {
+        $message = 'Usuario creado satisfactoriamente';
+    } else {
+        $message = 'Hubo un error creando tu cuenta';
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +32,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
 
     <header class="header">
@@ -16,11 +41,17 @@
         </nav>
     </header>
 
+    <?php if (!empty($message)) : ?>
+        <p> <?= $message ?></p>
+    <?php endif; ?>
+
     <div class="form-main-container">
         <div class="form-container">
-            <form action="index.php" method="POST">
-                <label for="username">Nombre de usuario</label><br>
-                <input type="text" name="username"><br>
+            <form action="signup.php" method="POST">
+                <label for="username">Nombre</label><br>
+                <input type="text" name="name"><br>
+                <label for="email">E-Mail</label><br>
+                <input type="text" name="email"><br>
                 <label for="password">Contraseña</label><br>
                 <input type="password" name="password"><br>
                 <label for="password-confirmation">Confirmar contraseña</label><br>
@@ -36,10 +67,14 @@
                 <img src="img/resorte.png" alt="" width="30px">
             </div>
             <div class="footer-info footer-items">
-            <h3>Info</h3>
+                <h3>Info</h3>
                 <ul>
-                    <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam deleniti quam a inventore, voluptates animi consectetur modi, deserunt consequatur assumenda dignissimos esse enim eveniet eius blanditiis aspernatur ipsam non harum.</p></li>
-                    <li><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi quis minima sint placeat laboriosam dicta a tempora optio impedit aperiam ipsum ex doloribus, quod sed maxime numquam repudiandae labore? Rerum?</p></li>
+                    <li>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam deleniti quam a inventore, voluptates animi consectetur modi, deserunt consequatur assumenda dignissimos esse enim eveniet eius blanditiis aspernatur ipsam non harum.</p>
+                    </li>
+                    <li>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi quis minima sint placeat laboriosam dicta a tempora optio impedit aperiam ipsum ex doloribus, quod sed maxime numquam repudiandae labore? Rerum?</p>
+                    </li>
                 </ul>
             </div>
             <div class="footer-redes footer-items">
@@ -57,4 +92,5 @@
         </div>
     </footer>
 </body>
+
 </html>
