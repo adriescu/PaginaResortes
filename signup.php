@@ -41,6 +41,8 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         </nav>
     </header>
 
+    <h3 style="text-align: center; font-size: 2rem">¿Ya tenés una cuenta? <a href="login.php">Iniciar Sesión</a></h3>
+
     <?php if (!empty($message)) : ?>
         <p> <?= $message ?></p>
     <?php endif; ?>

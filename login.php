@@ -46,6 +46,8 @@
         require 'partials/header-empty.php';
     ?>
 
+    <h3 style="text-align: center; font-size: 2rem">¿No tenés una cuenta? <a href="signup.php">Crear Cuenta</a></h3>
+
     <?php if(!empty($message)): ?>
         <p> <?= $message ?></p>
     <?php endif; ?>
