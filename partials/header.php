@@ -6,19 +6,19 @@
         </button>
         <ul class="nav-menu">
             <li class="nav-menu-item">
-                <a href="#" class="nav-menu-link nav-link nav-menu-link_active">Inicio</a>
+                <a href="index.php" class="nav-menu-link nav-link nav-menu-link_active">Inicio</a>
             </li>
             <li class="nav-menu-item">
                 <a href="#" class="nav-menu-link nav-link">Hacer pedido</a>
             </li>
             <li class="nav-menu-item">
-                <a href="#" class="nav-menu-link nav-link">Catálogo</a>
+                <a href="catalogue.php" class="nav-menu-link nav-link">Catálogo</a>
             </li>
             <li class="nav-menu-item">
-                <a href="#" class="nav-menu-link nav-link">Preguntas frecuentes</a>
+                <a href="faq.php" class="nav-menu-link nav-link">Preguntas frecuentes</a>
             </li>
             <li class="nav-menu-item">
-                <a href="#" class="nav-menu-link nav-link">Acerca de</a>
+                <a href="about.php" class="nav-menu-link nav-link">Acerca de</a>
             </li>
         </ul>
     </nav>

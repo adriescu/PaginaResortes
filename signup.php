@@ -44,7 +44,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     <h3 style="text-align: center; font-size: 2rem">¿Ya tenés una cuenta? <a href="login.php">Iniciar Sesión</a></h3>
 
     <?php if (!empty($message)) : ?>
-        <p> <?= $message ?></p>
+        <p class="cuenta-creada"> <?= $message ?></p>
     <?php endif; ?>
 
     <div class="form-main-container">

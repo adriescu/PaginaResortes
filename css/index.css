@@ -6,6 +6,7 @@
 body {
     font-family: sans-serif;
     padding: 90px 0 0;
+    background-color: lightblue;
 }
 
 .nav-link {
@@ -14,6 +15,7 @@ body {
 }
 
 .header {
+    z-index: 100;
     background-color: darkcyan;
     height: 80px;
     width: 100%;
@@ -170,4 +172,76 @@ body {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(3, auto);
     }
+}
+
+/* --------------------------------------------------------------------- */
+
+.main {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin-top: 80px;
+    overflow-y: auto;
+}
+
+.main-div-principal {
+    margin-top: 20vh;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-div-principal h1{
+    font-size: 3rem;
+    margin: 2rem 0;
+}
+
+.main-div-principal p{
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+.boton-estilo {
+    text-decoration: none;
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: lightskyblue;
+    color: white;
+    font-size: 2rem;
+}
+
+.boton-estilo:visited{
+    text-decoration: none;
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: lightskyblue;
+    color: white;
+    font-size: 2rem;
+}
+
+.welcome{
+    font-size: 2rem;
+    background-color: red;
+}
+
+/* FAQ */
+
+.preguntas-div{
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+}
+
+.preguntas-main{
+    display: flex;
+    position: relative;
+    height: 70vh;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
 }
