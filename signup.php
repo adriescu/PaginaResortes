@@ -4,21 +4,34 @@ require 'database.php';
 
 $message = '';
 
-if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':name', $_POST['name']);
-    $stmt->bindParam(':email', $_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':password', $password);
+// if (!empty($_POST['email']) && !empty($_POST['password'])) {
+//     $sql = "INSERT INTO users (name, email, password) VALUES (:name, :email, :password)";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->bindParam(':name', $_POST['name']);
+//     $stmt->bindParam(':email', $_POST['email']);
+//     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+//     $stmt->bindParam(':password', $password);
 
-    if ($stmt->execute()) {
-        $message = 'Usuario creado satisfactoriamente';
-    } else {
-        $message = 'Hubo un error creando tu cuenta';
+//     if ($stmt->execute()) {
+//         $message = 'Usuario creado satisfactoriamente';
+//     } else {
+//         $message = 'Hubo un error creando tu cuenta';
+//     }
+// }
+    if (!empty($_POST['email']) && !empty($_POST['password'])) {
+        $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $email, $password);
+
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+        if($stmt->execute()){
+            $message = 'Usuario creado satisfactoriamente';
+        } else {
+            $message = 'Hubo un error creando tu cuenta';
+        }
     }
-}
-
 ?>
 
 <!DOCTYPE html>
