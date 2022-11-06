@@ -20,7 +20,7 @@
                 <a href="index.php" class="nav-menu-link nav-link">Inicio</a>
                 </li>
             <li class="nav-menu-item">
-                <a href="#" class="nav-menu-link nav-link">Hacer pedido</a>
+                <a href="hacerPedido.php" class="nav-menu-link nav-link">Hacer pedido</a>
             </li>
             <li class="nav-menu-item">
                 <a href="catalogue.php" class="nav-menu-link nav-link">Catálogo</a>
