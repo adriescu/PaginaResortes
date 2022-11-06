@@ -6,7 +6,7 @@
         header('Location: /PaginaResortes');
     }
 
-    // require 'database.php';
+    require 'database.php';
 
     // if (!empty($_POST['email']) && !empty($_POST['password'])) {
     //     $records = $conn->prepare('SELECT id, email, password FROM users WHERE email = :email');
@@ -27,6 +27,25 @@
     //     $message = 'Las credenciales no coinciden!';
     // }
     // }
+
+    if (!empty($_POST['email']) && !empty($_POST['password'])) {
+        $sql = "SELECT id, email, password FROM users WHERE email = '" . $_POST['email'] . "'";
+        $records = $conn->query($sql);
+
+        $results = $records->fetch_assoc();
+
+        if($results){
+            if(count($results) > 0 && password_verify($_POST['password'], $results['password'])){
+                $_SESSION['user_id'] = $results['id'];
+                header("Location: /PaginaResortes");
+            } else {
+                $message = 'Las credenciales no coinciden!';
+            }
+        } else {
+            $message = 'Las credenciales no coinciden!';
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
