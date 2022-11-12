@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/index2.css">
+    <link rel="stylesheet" href="css/signupSuccess.css">
     <script defer src="js/index.js"></script>
 </head>
 <body>
-    
+
     <header class="header">
         <nav class="nav">
             <a href="" class="logo nav-link">Resortes</a>
@@ -28,15 +25,15 @@
                     <a href="hacerPedido.php" class="nav-menu-link nav-link">Hacer pedido</a>
                 </li>
                 <li class="nav-menu-item">
-                    <a href="catalogue.php" class="nav-menu-link nav-link nav-menu-link_active">Catálogo</a>
+                    <a href="catalogue.php" class="nav-menu-link nav-link">Catálogo</a>
                 </li>
                 <li class="nav-menu-item">
                     <a href="faq.php" class="nav-menu-link nav-link">Preguntas frecuentes</a>
                 </li>
                 <li class="nav-menu-item">
-                    <a href="about.php" class="nav-menu-link nav-link">Acerca de</a>
+                    <a href="about.php" class="nav-menu-link nav-link nav-menu-link_active">Acerca de</a>
                 </li>
-                <?php if(isset($_SESSION['user_id'])): ?>
+                <?php if(!empty($user)): ?>
                     <li class="nav-menu-item">
                         <a href="pedidos.php" class="nav-menu-link nav-link">Pedidos</a>
                     </li>
@@ -51,10 +48,13 @@
             </ul>
         </nav>
     </header>
+<div class="signupSuccess-div">
+    <p class="signupSuccess">Cuenta creada satisfactoriamente</p><br>
+    <a href="login.php" class="signupSuccess-link">Iniciar Sesión</a>
+</div>
 
-    <?php
-        require 'partials/footer.php';
-    ?>
-
+<?php
+    require "partials/footer.php";
+?>
 </body>
 </html>

@@ -23,3 +23,9 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+.cuenta-creada{
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(175, 38, 38);
+}
