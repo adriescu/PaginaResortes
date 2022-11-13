@@ -4,6 +4,36 @@
     if (!isset($_SESSION['user_id'])) {
         header('Location: login.php');
     }
+
+    if ($_SESSION['user_id'] == 1) {
+        header('Location: index.php');
+    }
+
+    $message = '';
+
+    require 'database.php';
+
+    if (!empty($_POST['tipo']) && !empty($_POST['cantidad']) && !empty($_POST['medida']) && !empty($_POST['vueltas'])) {
+        $stmt = $conn->prepare("INSERT INTO pedidos (usuario, tipo, cantidad, medida, vueltas, descripcion, estado) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isiiiss", $usuario, $tipo, $cantidad, $medida, $vueltas, $descripcion, $estado);
+
+        $usuario = $_SESSION['user_id'];
+        $tipo = $_POST['tipo'];
+        $cantidad = $_POST['cantidad'];
+        $medida = $_POST['medida'];
+        $vueltas = $_POST['vueltas'];
+        $descripcion = $_POST['descripcion'];
+        $estado = "No listo";
+        
+        if($stmt->execute()){
+            $message = 'Pedido procesado con éxito';
+        } else {
+            $message = 'Hubo un error procesando tu pedido';
+        }
+        
+    }else if(!empty($_POST['tipo']) || !empty($_POST['cantidad']) || !empty($_POST['medida']) || !empty($_POST['vueltas'])){
+        $message = 'Por favor complete todos los datos';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +44,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacer Pedido</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/pedidos.css">
+    <link rel="stylesheet" href="css/hacerPedidos.css">
     <script defer src="js/index.js"></script>
 </head>
 <body>
@@ -57,8 +87,13 @@
         </nav>
     </header>
 
+    <?php if (!empty($message)) : ?>
+        <p class="mensaje"> <?= $message ?></p>
+    <?php endif; ?>
+
+
 <div class="formularioPedido">
-    <form action="hacerPedido.php" submit="POST">
+    <form action="hacerPedido.php" method="POST">
         <label for="tipoDeResorte">Tipo</label>
         <select name="tipo" id="tipoDeResorte">
             <?php

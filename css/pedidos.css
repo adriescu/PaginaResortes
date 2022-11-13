@@ -1,24 +1,14 @@
-.formularioPedido form{
-    display: flex;
-    flex-direction: column;
-    margin: 0 20% 0 20%;
-    font-size: 2rem;
+.pedido-container{
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
-.formularioPedido input{
-    font-size: 2rem;
+.pedido-div{
+
 }
 
-#boton{
+.pedido-atributo{
     font-size: 2rem;
-    min-width: 20vw;
-    margin: 3rem 0;
-    background-color: lightskyblue;
-    border: 2px black solid;
-    border-radius: 10px;
-    cursor: pointer;
-}
 
-#tipoDeResorte{
-    font-size: 2rem;
 }

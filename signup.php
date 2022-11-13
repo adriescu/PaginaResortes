@@ -70,7 +70,7 @@ $message = '';
             </button>
             <ul class="nav-menu">
                 <li class="nav-menu-item">
-                    <a href="index.php" class="nav-menu-link nav-link nav-menu-link_active">Inicio</a>
+                    <a href="index.php" class="nav-menu-link nav-link">Inicio</a>
                 </li>
                 <li class="nav-menu-item">
                     <a href="hacerPedido.php" class="nav-menu-link nav-link">Hacer pedido</a>
@@ -93,7 +93,7 @@ $message = '';
                     </li>
                 <?php else: ?>
                     <li class="nav-menu-item">
-                        <a href="login.php" class="nav-menu-link nav-link">Iniciar Sesión</a>
+                        <a href="login.php" class="nav-menu-link nav-link nav-menu-link_active">Iniciar Sesión</a>
                     </li>
                 <?php endif; ?>
             </ul>
