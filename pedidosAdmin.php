@@ -7,11 +7,11 @@
         header('Location: login.php');
     }
 
-    if($_SESSION['user_id'] == 1){
-        header('Location: pedidosAdmin.php');
+    if($_SESSION['user_id'] != 1){
+        header('Location: pedidos.php');
     }
     
-    $sql = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos WHERE usuario=" . $_SESSION['user_id'];
+    $sql = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos";
     // $sql = "SELECT tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos WHERE usuario=?";
     // $stmt = $conn->prepare($sql);
     // $stmt->bind_param("i", $id);
@@ -113,7 +113,6 @@
     
     <div class="pedido-container">
         <?php
-    if($result->num_rows > 0){
     for ($i=0; $i < count($tipoArr); $i++) { 
         echo '
         <div class="pedido-div">
@@ -127,12 +126,6 @@
             <button type="submit" value="'. $idArr[$i] .'" name="eliminar">Eliminar</button>
         </form>
         </div>';
-    }
-    }else{
-        echo "
-        <p>No tenés ningún pedido todavía</p>
-        <a href='hacerPedido.php'>Hacer pedido</a>
-        ";
     }
     ?>
 </div>

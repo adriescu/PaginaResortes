@@ -6,7 +6,7 @@
     }
 
     if ($_SESSION['user_id'] == 1) {
-        header('Location: index.php');
+        header('Location: pedidos.php');
     }
 
     $message = '';
