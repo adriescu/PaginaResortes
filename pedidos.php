@@ -10,17 +10,55 @@
     if($_SESSION['user_id'] == 1){
         header('Location: pedidosAdmin.php');
     }
-    
-    $sql = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos WHERE usuario=" . $_SESSION['user_id'];
-    // $sql = "SELECT tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos WHERE usuario=?";
-    // $stmt = $conn->prepare($sql);
-    // $stmt->bind_param("i", $id);
-    // $stmt->execute();
-    // $result = $stmt->get_result();
-    $result = $conn->query($sql);
+
+    echo $_SESSION["user_id"];
+
+//Eliminar pedido
+    if(isset($_POST["eliminar"]) && $_SESSION['user_id'] != 1){
+        $sql = "DELETE FROM pedidos WHERE id=" . $_POST["eliminar"] . " AND usuario=" . $_SESSION['user_id'];
+        if ($conn->query($sql) === TRUE) {
+            $message = 'Pedido eliminado satisfactoriamente';
+        } else {
+            $message = 'Hubo un error eliminando el pedido';
+        }
+
+    }else if(isset($_POST["eliminar"]) && $_SESSION['user_id'] == 1){
+        $sql = "DELETE FROM pedidos WHERE id=" . $_POST["eliminar"];
+
+        if ($conn->query($sql) === TRUE) {
+            $message = 'Pedido eliminado satisfactoriamente';
+        } else {
+            $message = 'Hubo un error eliminando el pedido';
+        }
+        
+    }
+
+//Actualizar estado de los pedidos
+    if(isset($_POST["cambiar-estado"]) && $_SESSION['user_id'] == 1){
+        $sql4 = "SELECT estado FROM pedidos WHERE id=" . $_POST["cambiar-estado"];
+        $result2 = $conn->query($sql4);
+        $row2 = $result2->fetch_assoc();
+
+        if($row2["estado"] == "No listo"){
+            $estado = "Listo";
+        }else{
+            $estado = "No listo";
+        }
+
+        $sql2 = "UPDATE pedidos SET estado=" . $estado . " WHERE id=" . $_POST["cambiar-estado"];
+        if ($conn->query($sql2) === TRUE) {
+            $message2 = "Se ha cambiado el estado del pedido";
+        }else{
+            $message2 = "Hubo un error cambiando el estado del pedido";
+        }
+    }
+
+//Mostrar los pedidos
+    $sql3 = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos WHERE usuario=" . $_SESSION['user_id'];
+    $result = $conn->query($sql3);
     
     $id = $_SESSION['user_id'];
-    echo $result->num_rows;
+
     $idArr = [];
     $tipoArr = [];
     $cantidadArr = [];
@@ -29,10 +67,6 @@
     $descripcionArr = [];
     $estadoArr = [];
     
-
-    
-
-
     while ($row = $result->fetch_assoc()) {
         $idArr[] = $row["id"];
         $tipoArr[] = $row["tipo"];
@@ -43,6 +77,7 @@
         $estadoArr[] = $row["estado"];
     }
     
+
 
     // if ($result->num_rows > 0) {
     //   // output data of each row
@@ -112,28 +147,66 @@
     </div> -->
     
     <div class="pedido-container">
-        <?php
-    if($result->num_rows > 0){
-    for ($i=0; $i < count($tipoArr); $i++) { 
-        echo '
-        <div class="pedido-div">
-        <form action="" method="post">
-            <p class="pedido-atributo">Tipo: '. $tipoArr[$i] .'</p>
-            <p class="pedido-atributo">Cantidad: '. $cantidadArr[$i] .'</p>
-            <p class="pedido-atributo">Medida: '. $medidaArr[$i] .'</p>
-            <p class="pedido-atributo">Vueltas: '. $vueltasArr[$i] .'</p>
-            <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
-            <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
-            <button type="submit" value="'. $idArr[$i] .'" name="eliminar">Eliminar</button>
-        </form>
-        </div>';
+    <?php
+
+    if (isset($message)) {
+        echo '<p class="pedido-mensaje">' . $message . '</p>';
     }
+
+    if (isset($message2)) {
+        echo '<p class="pedido-mensaje">' . $message2 . '</p>';
+    }
+
+if ($_SESSION['user_id'] != 1) {
+ 
+    if($result->num_rows > 0){
+        for ($i=0; $i < count($tipoArr); $i++) { 
+            echo '
+            <div class="pedido-div">
+            <form action="" method="post">
+                <p class="pedido-atributo">Tipo: '. $tipoArr[$i] .'</p>
+                <p class="pedido-atributo">Cantidad: '. $cantidadArr[$i] .'</p>
+                <p class="pedido-atributo">Medida: '. $medidaArr[$i] .'</p>
+                <p class="pedido-atributo">Vueltas: '. $vueltasArr[$i] .'</p>
+                <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
+                <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
+                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="pedido-boton">Eliminar</button>
+            </form>
+            </div>';
+        }
     }else{
         echo "
-        <p>No tenés ningún pedido todavía</p>
-        <a href='hacerPedido.php'>Hacer pedido</a>
+        <div class='pedido-div2'>
+        <p class='pedidos-p'>No tenés ningún pedido todavía</p>
+        <a href='hacerPedido.php' class='pedidos-a'>Hacer pedido</a>
+        </div>
         ";
     }
+}else{
+    if($result->num_rows > 0){
+        for ($i=0; $i < count($tipoArr); $i++) { 
+            echo '
+            <div class="pedido-div">
+            <form action="" method="post">
+                <p class="pedido-atributo">Tipo: '. $tipoArr[$i] .'</p>
+                <p class="pedido-atributo">Cantidad: '. $cantidadArr[$i] .'</p>
+                <p class="pedido-atributo">Medida: '. $medidaArr[$i] .'</p>
+                <p class="pedido-atributo">Vueltas: '. $vueltasArr[$i] .'</p>
+                <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
+                <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
+                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="pedido-boton">Eliminar</button>
+                <button type="submit" value="'. $idArr[$i] .'" name="cambiar-estado" class="pedido-boton">Cambiar estado</button>
+            </form>
+            </div>';
+        }
+    }else{
+        echo "
+        <div class='pedido-div2'>
+        <p class='pedidos-p'>No hay ningún pedido todavía</p>
+        </div>
+        ";
+    }
+}
     ?>
 </div>
     <?php

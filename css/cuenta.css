@@ -1,0 +1,19 @@
+.cuenta-container{
+display: flex;
+flex-direction: column;
+justify-content: center;
+width: 50%;
+}
+
+.cuenta-div{
+    width: 100%;
+}
+
+.cuenta-div p{
+    font-size: 2rem;
+}
+
+.cuenta-div a{
+    font-size: 2rem;
+    text-decoration: none;
+}
