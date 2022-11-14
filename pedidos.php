@@ -7,11 +7,9 @@
         header('Location: login.php');
     }
 
-    if($_SESSION['user_id'] == 1){
-        header('Location: pedidosAdmin.php');
-    }
-
-    echo $_SESSION["user_id"];
+    // if($_SESSION['user_id'] == 1){
+    //     header('Location: pedidosAdmin.php');
+    // }
 
 //Eliminar pedido
     if(isset($_POST["eliminar"]) && $_SESSION['user_id'] != 1){
@@ -45,7 +43,7 @@
             $estado = "No listo";
         }
 
-        $sql2 = "UPDATE pedidos SET estado=" . $estado . " WHERE id=" . $_POST["cambiar-estado"];
+        $sql2 = "UPDATE pedidos SET estado='" . $estado . "' WHERE id=" . $_POST["cambiar-estado"];
         if ($conn->query($sql2) === TRUE) {
             $message2 = "Se ha cambiado el estado del pedido";
         }else{
@@ -54,7 +52,12 @@
     }
 
 //Mostrar los pedidos
-    $sql3 = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos WHERE usuario=" . $_SESSION['user_id'];
+    if($_SESSION['user_id'] != 1){
+        $sql3 = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos WHERE usuario=" . $_SESSION['user_id'];
+    }else{
+        $sql3 = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos";
+    }
+    
     $result = $conn->query($sql3);
     
     $id = $_SESSION['user_id'];
@@ -76,17 +79,6 @@
         $descripcionArr[] = $row["descripcion"];
         $estadoArr[] = $row["estado"];
     }
-    
-
-
-    // if ($result->num_rows > 0) {
-    //   // output data of each row
-    //     while($row = $result->fetch_assoc()) {
-    //     echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-    //     }
-    // } else {
-    //   echo "0 results";
-    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -74,8 +74,8 @@
         <div class='cuenta-div'>
             <p>Nombre: " . $row["name"] . "</p>
             <p>Email: " . $row["email"] . "</p>
-            <a href='pedidos.php'>Ver pedidos</a>
-            <a href='logout.php'>Cerrar Sesión</a>
+            <a href='pedidos.php' class='cuenta-boton'>Ver pedidos</a>
+            <a href='logout.php' class='cuenta-boton'>Cerrar Sesión</a>
         </div>
         ";
     ?>
