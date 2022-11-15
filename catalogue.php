@@ -60,7 +60,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/index2.css">
+    <link rel="stylesheet" href="css/catalogo.css">
     <script defer src="js/index.js"></script>
 </head>
 <body>
@@ -102,18 +102,18 @@
             </ul>
         </nav>
     </header>
-
+<div class="catalogo-container">
     <?php
         if($sesion == 1){
             echo '
-            <form action="catalogue.php" method="post">
-            <label for="">Nombre:</label>
-            <input type="text" name="nombre" id="nombre">
-            <label for="">Descripción:</label>
-            <input type="text" name="descripcion" id="descripcion">
-            <label for="">Link de la foto:</label>
-            <input type="text" name="foto" id="foto">
-            <button type="submit">Enviar</button>
+            <form action="catalogue.php" method="post" class="catalogo-form">
+                <label for="">Nombre:</label>
+                <input type="text" name="nombre" id="nombre">
+                <label for="">Descripción:</label>
+                <input type="text" name="descripcion" id="descripcion">
+                <label for="">Link de la foto:</label>
+                <input type="text" name="foto" id="foto">
+                <button type="submit" id="boton">Enviar</button>
             </form>
             ';
         }
@@ -121,7 +121,7 @@
         if ($sesion != 1) {
             for ($i=0; $i < count($idArr); $i++) { 
                 echo '
-                <div class="catalogo-p">
+                <div class="catalogo-div">
                     <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
                     <p class="catalogo-p">' . $nombreArr[$i] . '</p>
                     <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
@@ -131,12 +131,12 @@
         }else{
             for ($i=0; $i < count($idArr); $i++) { 
                 echo '
-                <div class="catalogo-p">
+                <div class="catalogo-div">
                 <form action="catalogue.php" method="post">
                     <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
                     <p class="catalogo-p">' . $nombreArr[$i] . '</p>
                     <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
-                    <button type="submit" name="eliminar" value="' . $idArr[$i] . '">Eliminar</button>
+                    <button type="submit" name="eliminar" value="' . $idArr[$i] . '" id="boton">Eliminar</button>
                 </form>
                 </div>
                 ';
@@ -146,8 +146,7 @@
         
 
     ?>
-
-    
+</div>
 
     <?php
         require 'partials/footer.php';

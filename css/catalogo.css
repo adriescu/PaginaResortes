@@ -1,11 +1,21 @@
-.formularioPedido form{
+.catalogo-container{
     display: flex;
     flex-direction: column;
     margin: 0 20% 0 20%;
     font-size: 2rem;
+    text-align: center;
 }
 
-.formularioPedido input{
+.catalogo-img{
+    width: 50%;
+}
+
+.catalogo-form input{
+    width: 100%;
+    font-size: 2rem;
+}
+
+.catalogo-form label{
     font-size: 2rem;
 }
 
@@ -19,15 +29,7 @@
     cursor: pointer;
 }
 
-#tipoDeResorte{
-    font-size: 2rem;
-}
-
-#enrollamiento{
-    font-size: 2rem;
-}
-
-.mensaje{
-    text-align: center;
-    font-size: 2rem;
+.catalogo-img{
+    border: 5px black solid;
+    border-radius: 50px;
 }

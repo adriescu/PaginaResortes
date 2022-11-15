@@ -82,8 +82,8 @@
 
     <main class="main">
         <div class="main-div-principal">
-            <h1>Resortes lorem ipsum</h1>
-            <p>Esto es información importante lorem ipsum</p>
+            <h1>Resortes Lorem Ipsum</h1>
+            <p>Todos los resortes que estabas buscando</p>
             <?php if(!empty($user)): ?>
                 <p class="welcome">Bienvenido <?= $user['name']; ?></p> 
                 <p class="welcome">Ya has iniciado sesión</p>

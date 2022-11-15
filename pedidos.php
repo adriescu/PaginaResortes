@@ -53,9 +53,9 @@
 
 //Mostrar los pedidos
     if($_SESSION['user_id'] != 1){
-        $sql3 = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos WHERE usuario=" . $_SESSION['user_id'];
+        $sql3 = "SELECT id, tipo, cantidad, diametroA, diametroR, diametroEI, longitudL, espacio, enrollamiento, descripcion, estado FROM pedidos WHERE usuario=" . $_SESSION['user_id'];
     }else{
-        $sql3 = "SELECT id, tipo, cantidad, medida, vueltas, descripcion, estado FROM pedidos";
+        $sql3 = "SELECT id, tipo, cantidad, diametroA, diametroR, diametroEI, longitudL, espacio, enrollamiento, descripcion, estado FROM pedidos";
     }
     
     $result = $conn->query($sql3);
@@ -65,8 +65,12 @@
     $idArr = [];
     $tipoArr = [];
     $cantidadArr = [];
-    $medidaArr = [];
-    $vueltasArr = [];
+    $diametroAArr = [];
+    $diametroRArr = [];
+    $diametroEIArr = [];
+    $longitudLArr = [];
+    $espacioArr = [];
+    $enrollamientoArr = [];
     $descripcionArr = [];
     $estadoArr = [];
     
@@ -74,8 +78,12 @@
         $idArr[] = $row["id"];
         $tipoArr[] = $row["tipo"];
         $cantidadArr[] = $row["cantidad"];
-        $medidaArr[] = $row["medida"];
-        $vueltasArr[] = $row["vueltas"];
+        $diametroAArr [] = $row["diametroA"];
+        $diametroRArr [] = $row["diametroR"];
+        $diametroEIArr [] = $row["diametroEI"];
+        $longitudLArr [] = $row["longitudL"];
+        $espacioArr [] = $row["espacio"];
+        $enrollamientoArr [] = $row["enrollamiento"];
         $descripcionArr[] = $row["descripcion"];
         $estadoArr[] = $row["estado"];
     }
@@ -155,11 +163,15 @@ if ($_SESSION['user_id'] != 1) {
         for ($i=0; $i < count($tipoArr); $i++) { 
             echo '
             <div class="pedido-div">
-            <form action="" method="post">
+            <form action="pedidos.php" method="post">
                 <p class="pedido-atributo">Tipo: '. $tipoArr[$i] .'</p>
                 <p class="pedido-atributo">Cantidad: '. $cantidadArr[$i] .'</p>
-                <p class="pedido-atributo">Medida: '. $medidaArr[$i] .'</p>
-                <p class="pedido-atributo">Vueltas: '. $vueltasArr[$i] .'</p>
+                <p class="pedido-atributo">Diametro del alambre: '. $diametroAArr[$i] .'</p>
+                <p class="pedido-atributo">Diametro del resorte: '. $diametroRArr[$i] .'</p>
+                <p class="pedido-atributo">Diametro exterior/interior: '. $diametroEIArr[$i] .'</p>
+                <p class="pedido-atributo">Longitud libre: '. $longitudLArr[$i] .'</p>
+                <p class="pedido-atributo">Espacio entre vueltas: '. $espacioArr[$i] .'</p>
+                <p class="pedido-atributo">Enrollamiento: '. $enrollamientoArr[$i] .'</p>
                 <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
                 <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
                 <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="pedido-boton">Eliminar</button>
@@ -179,11 +191,15 @@ if ($_SESSION['user_id'] != 1) {
         for ($i=0; $i < count($tipoArr); $i++) { 
             echo '
             <div class="pedido-div">
-            <form action="" method="post">
+            <form action="pedidos.php" method="post">
                 <p class="pedido-atributo">Tipo: '. $tipoArr[$i] .'</p>
                 <p class="pedido-atributo">Cantidad: '. $cantidadArr[$i] .'</p>
-                <p class="pedido-atributo">Medida: '. $medidaArr[$i] .'</p>
-                <p class="pedido-atributo">Vueltas: '. $vueltasArr[$i] .'</p>
+                <p class="pedido-atributo">Diametro del alambre: '. $diametroAArr[$i] .'</p>
+                <p class="pedido-atributo">Diametro del resorte: '. $diametroRArr[$i] .'</p>
+                <p class="pedido-atributo">Diametro exterior/interior: '. $diametroEIArr[$i] .'</p>
+                <p class="pedido-atributo">Longitud libre: '. $longitudLArr[$i] .'</p>
+                <p class="pedido-atributo">Espacio entre vueltas: '. $espacioArr[$i] .'</p>
+                <p class="pedido-atributo">Enrollamiento: '. $enrollamientoArr[$i] .'</p>
                 <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
                 <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
                 <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="pedido-boton">Eliminar</button>
