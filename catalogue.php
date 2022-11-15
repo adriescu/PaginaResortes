@@ -1,6 +1,57 @@
 <?php
     session_start();
+
+    if (!isset($_SESSION['user_id'])) {
+        $sesion = 0;
+    }else{
+        $sesion = $_SESSION['user_id'];
+    }
+
+    require 'database.php';
+
+    if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["foto"]) && ($_POST["foto"] != "") && $sesion == 1){
+        $sql = "INSERT INTO catalogo (nombre, descripcion, foto) VALUES ('" . $_POST["nombre"] . "','" . $_POST["descripcion"] . "','" . $_POST["foto"] . "')";
+        if ($conn->query($sql) === TRUE) {
+            $mensaje = "Item creado satisfactoriamente";
+        }else{
+            $mensaje = "Hubo un error creando el item";
+        }
+    }else if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && $sesion == 1){
+        $sql = "INSERT INTO catalogo (nombre, descripcion, foto) VALUES ('" . $_POST["nombre"] . "','" . $_POST["descripcion"] . "','img/catalogo/default.png')";
+        if ($conn->query($sql) === TRUE) {
+            $mensaje = "Item creado satisfactoriamente";
+        }else{
+            $mensaje = "Hubo un error creando el item";
+        }
+    }
+
+    if(isset($_POST["eliminar"]) && $sesion == 1){
+        $sql = "DELETE FROM catalogo WHERE id=" . $_POST["eliminar"];
+        if($conn->query($sql) === TRUE){
+            $mensaje = "Item eliminado satisfactoriamente";
+        }else{
+            $mensaje = "Hubo un error al eliminar el item";
+        }
+    }
+
+    $sql = "SELECT id, nombre, descripcion, foto FROM catalogo";
+    
+    $results = $conn->query($sql);
+
+    $idArr = [];
+    $nombreArr = [];
+    $descripcionArr = [];
+    $fotoArr = [];
+
+    while($row = $results->fetch_assoc()){
+        $idArr[] = $row["id"];
+        $nombreArr[] = $row["nombre"];
+        $descripcionArr[] = $row["descripcion"];
+        $fotoArr[] = $row["foto"];
+    }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +102,52 @@
             </ul>
         </nav>
     </header>
+
+    <?php
+        if($sesion == 1){
+            echo '
+            <form action="catalogue.php" method="post">
+            <label for="">Nombre:</label>
+            <input type="text" name="nombre" id="nombre">
+            <label for="">Descripción:</label>
+            <input type="text" name="descripcion" id="descripcion">
+            <label for="">Link de la foto:</label>
+            <input type="text" name="foto" id="foto">
+            <button type="submit">Enviar</button>
+            </form>
+            ';
+        }
+        
+        if ($sesion != 1) {
+            for ($i=0; $i < count($idArr); $i++) { 
+                echo '
+                <div class="catalogo-p">
+                    <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
+                    <p class="catalogo-p">' . $nombreArr[$i] . '</p>
+                    <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
+                </div>
+                ';
+            }
+        }else{
+            for ($i=0; $i < count($idArr); $i++) { 
+                echo '
+                <div class="catalogo-p">
+                <form action="catalogue.php" method="post">
+                    <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
+                    <p class="catalogo-p">' . $nombreArr[$i] . '</p>
+                    <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
+                    <button type="submit" name="eliminar" value="' . $idArr[$i] . '">Eliminar</button>
+                </form>
+                </div>
+                ';
+            }
+            
+        }
+        
+
+    ?>
+
+    
 
     <?php
         require 'partials/footer.php';
