@@ -16,7 +16,7 @@
 <body>
 <header class="header">
         <nav class="nav">
-            <a href="" class="logo nav-link">Resortes</a>
+            <a href="index.php" class="logo nav-link">Resortes</a>
             <button class="nav-toggle">
             <i class="material-icons">menu</i>
             </button>
@@ -32,9 +32,6 @@
                 </li>
                 <li class="nav-menu-item">
                     <a href="faq.php" class="nav-menu-link nav-link nav-menu-link_active">Preguntas frecuentes</a>
-                </li>
-                <li class="nav-menu-item">
-                    <a href="about.php" class="nav-menu-link nav-link">Acerca de</a>
                 </li>
                 <?php if(isset($_SESSION['user_id'])): ?>
                     <li class="nav-menu-item">
@@ -55,16 +52,16 @@
     <main class="preguntas-main">
         <div class="preguntas-div">
             <h2>Prguntas frecuentes</h2>
-            <h3>Pregunta 1</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae facilis dignissimos hic corrupti, dicta alias iste inventore sunt, porro necessitatibus ipsa illo doloribus vel in cum mollitia laborum laudantium ab.</p>
-            <h3>Pregunta 2</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae facilis dignissimos hic corrupti, dicta alias iste inventore sunt, porro necessitatibus ipsa illo doloribus vel in cum mollitia laborum laudantium ab.</p>
-            <h3>Pregunta 3</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae facilis dignissimos hic corrupti, dicta alias iste inventore sunt, porro necessitatibus ipsa illo doloribus vel in cum mollitia laborum laudantium ab.</p>
-            <h3>Pregunta 4</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae facilis dignissimos hic corrupti, dicta alias iste inventore sunt, porro necessitatibus ipsa illo doloribus vel in cum mollitia laborum laudantium ab.</p>
-            <h3>Pregunta 5</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae facilis dignissimos hic corrupti, dicta alias iste inventore sunt, porro necessitatibus ipsa illo doloribus vel in cum mollitia laborum laudantium ab.</p>
+            <h3>¿Qué es un resorte?</h3>
+            <p>Es una pieza elástica dispuesta en espiral, generalmente de metal, que se usa en ciertos mecanismos por la fuerza que desarrolla al recobrar su posición natural después de haber sido deformada (estirada, comprimida, doblada, etc.).</p>
+            <h3>¿Para qué sirven?</h3>
+            <p>El objetivo principal del resorte es que se adapta a las situaciones en las que se requiere aplicar una fuerza y que esta sea retornada en forma de energía.</p>
+            <h3>¿Cómo funciona esta página?</h3>
+            <p>Una vez iniciada sesión se pueden hacer pedidos; en la sección de pedidos se pueden ver todos los pedidos realizados y si están listos o no.</p>
+            <h3>¿Son necesarios los resortes?</h3>
+            <p>Totalmente. La Oranización Mundial de la Salud recomienda tener por lo menos 10 resortes.</p>
+            <h3>¿Cuanto tiempo llevó hacer esta página?</h3>
+            <p>Aproximadamente unos 37 años sin contar años bisiestos.</p>
         </div>
     </main>
 

@@ -27,7 +27,7 @@
 
     <header class="header">
         <nav class="nav">
-            <a href="" class="logo nav-link">Resortes</a>
+            <a href="index.php" class="logo nav-link">Resortes</a>
             <button class="nav-toggle">
             <i class="material-icons">menu</i>
             </button>
@@ -43,9 +43,6 @@
                 </li>
                 <li class="nav-menu-item">
                     <a href="faq.php" class="nav-menu-link nav-link">Preguntas frecuentes</a>
-                </li>
-                <li class="nav-menu-item">
-                    <a href="about.php" class="nav-menu-link nav-link">Acerca de</a>
                 </li>
                 <?php if(isset($_SESSION['user_id'])): ?>
                     <li class="nav-menu-item">

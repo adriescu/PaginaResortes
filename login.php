@@ -57,13 +57,15 @@
     <title>Inicia Sesión</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script defer src="js/index.js"></script>
 </head>
 <body>
 
     <header class="header">
         <nav class="nav">
-            <a href="" class="logo nav-link">Resortes</a>
+            <a href="index.php" class="logo nav-link">Resortes</a>
             <button class="nav-toggle">
             <i class="material-icons">menu</i>
             </button>
@@ -79,9 +81,6 @@
                 </li>
                 <li class="nav-menu-item">
                     <a href="faq.php" class="nav-menu-link nav-link">Preguntas frecuentes</a>
-                </li>
-                <li class="nav-menu-item">
-                    <a href="about.php" class="nav-menu-link nav-link">Acerca de</a>
                 </li>
                 <?php if(isset($_SESSION['user_id'])): ?>
                     <li class="nav-menu-item">
@@ -102,7 +101,7 @@
     <h3 style="text-align: center; font-size: 2rem">¿No tenés una cuenta? <a href="signup.php">Crear Cuenta</a></h3>
 
     <?php if(!empty($message)): ?>
-        <p> <?= $message ?></p>
+        <p class="mensaje"><?= $message ?></p>
     <?php endif; ?>
 
     <div class="form-main-container">

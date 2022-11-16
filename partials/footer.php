@@ -6,17 +6,17 @@
         <div class="footer-info footer-items">
         <h3>Info</h3>
             <ul>
-                <li><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam deleniti quam a inventore, voluptates animi consectetur modi, deserunt consequatur assumenda dignissimos esse enim eveniet eius blanditiis aspernatur ipsam non harum.</p></li>
-                <li><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi quis minima sint placeat laboriosam dicta a tempora optio impedit aperiam ipsum ex doloribus, quod sed maxime numquam repudiandae labore? Rerum?</p></li>
+                <li><p>Los resortes son nuestra pasión. Vivimos y respiramos gracias a los resortes. ¿De dónde viene el agua? De los resortes</p></li>
+                <li><p>Los resortes han pasado de ser una moda a ser partes de nuestras vidas</p></li>
             </ul>
         </div>
         <div class="footer-redes footer-items">
             <h3>Siguenos</h3>
             <ul>
-                <li>Instagram</li>
-                <li>Facebook</li>
-                <li>Twitter</li>
-                <li>Youtube</li>
+                <li><a href="#" class="footer-links">Instagram</a></li>
+                <li><a href="#" class="footer-links">Facebook</a></li>
+                <li><a href="#" class="footer-links">Twitter</a></li>
+                <li><a href="#" class="footer-links">Youtube</a></li>
             </ul>
         </div>
     </div>
