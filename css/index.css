@@ -1,19 +1,28 @@
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-9');
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Helvetica Neue', sans-serif;
+    
 }
-
 body {
     font-family: sans-serif;
     padding: 90px 0 0;
     background-color: lightblue;
+    animation: fondo 20s infinite;
 }
 
-.body-index{
+@keyframes fondo {
+    0% {background-color: rgb(120, 206, 235);}
+    50% {background-color: rgb(76, 210, 255);}
+    100% {background-color: rgb(120, 206, 235);}
+}
+
+/* .body-index{
     background-image: url("../img/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-}
+} */
 
 .nav-link {
     color: white;
@@ -200,7 +209,7 @@ body {
 }
 
 .main-div-principal {
-    margin-top: 20vh;
+    margin-top: 10vh;
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -209,26 +218,22 @@ body {
 }
 
 .main-div-principal h1{
-    color: white;
-    font-size: 3rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bolder;
+    font-size: 6rem;
     margin: 2rem 0;
-    background-color: darkcyan;
     /* border: 2px black solid; */
-    border-radius: 40px;
     padding: 30px;
 }
 
 .main-div-principal p{
-    color: white;
+    font-family: 'Helvetica Neue', sans-serif;
     font-size: 2rem;
     margin: 2rem 0;
-    background-color: darkcyan;
     /* border: 2px black solid; */
-    border-radius: 20px;
-    padding: 10px;
 }
 
-.boton-estilo {
+/* .boton-estilo {
     text-decoration: none;
     border: solid 2px black;
     border-radius: 10px;
@@ -240,7 +245,7 @@ body {
     animation-name: boton;
     animation-duration: 1s;
     animation-iteration-count: infinite;
-}
+} */
 
 @keyframes boton{
     0% {border: solid 2px black;}
@@ -248,11 +253,11 @@ body {
     100% {border: solid 2px black;}
 }
 
-.boton-estilo:hover{
+/* .boton-estilo:hover{
     background-color: lightseagreen;
     color: black;
     transition: 1000ms;
-}
+} */
 
 
 /* .boton-estilo:visited{
@@ -268,7 +273,8 @@ body {
 
 .welcome{
     font-size: 2rem;
-    background-color: red;
+    background-color: darkcyan;
+    padding: 1rem;
 }
 
 /* FAQ */

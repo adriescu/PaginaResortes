@@ -14,7 +14,7 @@
     font-size: 3rem;
 }
 
-#submit-button {
+/* #submit-button {
     font-size: 2rem;
     min-width: 20vw;
     margin: 3rem 0;
@@ -22,7 +22,7 @@
     border: 2px black solid;
     border-radius: 10px;
     cursor: pointer;
-}
+} */
 
 .cuenta-creada{
     text-align: center;
@@ -33,4 +33,26 @@
 .mensaje{
     text-align: center;
     font-size: 2rem;
+}
+
+/* --- */
+
+.input {
+  max-width: 190px;
+  height: 44px;
+  background-color: #ffffff;
+  border-radius: .5rem;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.input:hover, .input:focus{
+  outline: none;
+  border-color: #05060f;
+}
+
+.input:focus {
+  color: #05060fc2;
 }

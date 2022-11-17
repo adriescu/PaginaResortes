@@ -105,7 +105,7 @@
 <div class="formularioPedido">
     <form action="hacerPedido.php" method="POST">
         <label for="tipoDeResorte">Tipo</label>
-        <select name="tipo" id="tipoDeResorte">
+        <select name="tipo" id="tipoDeResorte" class="input">
             <?php
                 for ($i=0; $i < count($tiposDeResorte); $i++) { 
                     echo '<option value="' . $tiposDeResorte[$i] . '">' . $tiposDeResorte[$i] .'</option>';
@@ -114,33 +114,33 @@
             <option value="Personalizado">Personalizado</option>
         </select>
         <label for="cantidad">Cantidad</label>
-        <input type="number" name="cantidad" id="cantidad">
+        <input type="number" name="cantidad" id="cantidad" class="input">
         
         <label for="diametroA">Diametro del alambre</label>
-        <input type="number" name="diametroA" id="diametroA">
+        <input type="number" name="diametroA" id="diametroA" class="input">
 
         <label for="diametroR">Diametro del resorte</label>
-        <input type="number" name="diametroR" id="diametroR">
+        <input type="number" name="diametroR" id="diametroR" class="input">
 
         <label for="diametroEI">Diametro exterior/interior</label>
-        <input type="number" name="diametroEI" id="diametroEI">
+        <input type="number" name="diametroEI" id="diametroEI" class="input">
 
         <label for="longitudL">Longitud libre</label>
-        <input type="number" name="longitudL" id="longitudL">
+        <input type="number" name="longitudL" id="longitudL" class="input">
 
         <label for="espacio">Espacio entre vueltas</label>
-        <input type="number" name="espacio" id="espacio">
+        <input type="number" name="espacio" id="espacio" class="input">
 
         <label for="enrollamiento">Enrollamiento</label>
-        <select name="enrollamiento" id="enrollamiento">
+        <select name="enrollamiento" id="enrollamiento" class="input">
             <option value="Derecha">Derecha</option>
             <option value="Izquierda">Izquierda</option>
         </select>
 
         <label for="descripcion">Descripción</label>
-        <input type="text" name="descripcion" id="descripcion">
+        <input type="text" name="descripcion" id="descripcion" class="input">
 
-        <input type="submit" value="Enviar pedido" id="boton">
+        <button type="submit" value="Enviar pedido" id="boton" class="button">Enviar pedido</button>
     </form>
 </div>
 

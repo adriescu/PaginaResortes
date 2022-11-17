@@ -105,12 +105,12 @@
             echo '
             <form action="catalogue.php" method="post" class="catalogo-form">
                 <label for="">Nombre:</label>
-                <input type="text" name="nombre" id="nombre">
+                <input type="text" name="nombre" id="nombre" class="input">
                 <label for="">Descripción:</label>
-                <input type="text" name="descripcion" id="descripcion">
+                <input type="text" name="descripcion" id="descripcion" class="input">
                 <label for="">Link de la foto:</label>
-                <input type="text" name="foto" id="foto">
-                <button type="submit" id="boton">Enviar</button>
+                <input type="text" name="foto" id="foto" class="input">
+                <button type="submit" class="button" style="margin-bottom:2rem;">Enviar</button>
             </form>
             ';
         }
@@ -118,7 +118,7 @@
         if ($sesion != 1) {
             for ($i=0; $i < count($idArr); $i++) { 
                 echo '
-                <div class="catalogo-div">
+                <div class="card">
                     <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
                     <p class="catalogo-p">' . $nombreArr[$i] . '</p>
                     <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
@@ -128,12 +128,12 @@
         }else{
             for ($i=0; $i < count($idArr); $i++) { 
                 echo '
-                <div class="catalogo-div">
+                <div class="card">
                 <form action="catalogue.php" method="post">
                     <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
                     <p class="catalogo-p">' . $nombreArr[$i] . '</p>
                     <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
-                    <button type="submit" name="eliminar" value="' . $idArr[$i] . '" id="boton">Eliminar</button>
+                    <button type="submit" name="eliminar" value="' . $idArr[$i] . '" class="button">Eliminar</button>
                 </form>
                 </div>
                 ';

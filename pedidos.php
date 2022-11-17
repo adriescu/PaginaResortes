@@ -161,7 +161,7 @@ if ($_SESSION['user_id'] != 1) {
     if($result->num_rows > 0){
         for ($i=0; $i < count($tipoArr); $i++) { 
             echo '
-            <div class="pedido-div">
+            <div class="card">
             <form action="pedidos.php" method="post">
                 <p class="pedido-atributo">Tipo: '. $tipoArr[$i] .'</p>
                 <p class="pedido-atributo">Cantidad: '. $cantidadArr[$i] .'</p>
@@ -173,7 +173,7 @@ if ($_SESSION['user_id'] != 1) {
                 <p class="pedido-atributo">Enrollamiento: '. $enrollamientoArr[$i] .'</p>
                 <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
                 <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
-                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="pedido-boton">Eliminar</button>
+                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="button">Eliminar</button>
             </form>
             </div>';
         }
@@ -189,7 +189,7 @@ if ($_SESSION['user_id'] != 1) {
     if($result->num_rows > 0){
         for ($i=0; $i < count($tipoArr); $i++) { 
             echo '
-            <div class="pedido-div">
+            <div class="card">
             <form action="pedidos.php" method="post">
                 <p class="pedido-atributo">Tipo: '. $tipoArr[$i] .'</p>
                 <p class="pedido-atributo">Cantidad: '. $cantidadArr[$i] .'</p>
@@ -201,8 +201,8 @@ if ($_SESSION['user_id'] != 1) {
                 <p class="pedido-atributo">Enrollamiento: '. $enrollamientoArr[$i] .'</p>
                 <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
                 <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
-                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="pedido-boton">Eliminar</button>
-                <button type="submit" value="'. $idArr[$i] .'" name="cambiar-estado" class="pedido-boton">Cambiar estado</button>
+                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="button">Eliminar</button>
+                <button type="submit" value="'. $idArr[$i] .'" name="cambiar-estado" class="button">Cambiar estado</button>
             </form>
             </div>';
         }
