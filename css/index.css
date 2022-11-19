@@ -8,7 +8,7 @@
 body {
     font-family: sans-serif;
     padding: 90px 0 0;
-    background-color: lightblue;
+    background-image: linear-gradient(rgb(120, 206, 235),rgb(76, 210, 255));
     animation: fondo 20s infinite;
 }
 
@@ -196,6 +196,7 @@ body {
     .footer-container {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(3, auto);
+        gap: 0;
     }
 }
 
@@ -204,16 +205,16 @@ body {
 .main {
     display: flex;
     justify-content: center;
-    height: 100vh;
-    overflow-y: auto;
+    min-height: 80vh;
 }
 
 .main-div-principal {
-    margin-top: 10vh;
+    margin: 5vh 0;
     width: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -221,7 +222,7 @@ body {
     font-family: 'Helvetica Neue', sans-serif;
     font-weight: bolder;
     font-size: 6rem;
-    margin: 2rem 0;
+    margin-top: 2rem;
     /* border: 2px black solid; */
     padding: 30px;
 }

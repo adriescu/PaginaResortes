@@ -173,7 +173,7 @@ if ($_SESSION['user_id'] != 1) {
                 <p class="pedido-atributo">Enrollamiento: '. $enrollamientoArr[$i] .'</p>
                 <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
                 <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
-                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="button">Eliminar</button>
+                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="button card-button">Eliminar</button>
             </form>
             </div>';
         }
@@ -201,8 +201,11 @@ if ($_SESSION['user_id'] != 1) {
                 <p class="pedido-atributo">Enrollamiento: '. $enrollamientoArr[$i] .'</p>
                 <p class="pedido-atributo">Descripción: '. $descripcionArr[$i] .'</p>
                 <p class="pedido-atributo">Estado: '. $estadoArr[$i] .'</p>
-                <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="button">Eliminar</button>
-                <button type="submit" value="'. $idArr[$i] .'" name="cambiar-estado" class="button">Cambiar estado</button>
+                <div class="card-button">
+                    <button type="submit" value="'. $idArr[$i] .'" name="eliminar" class="button">Eliminar</button>
+                    <button type="submit" value="'. $idArr[$i] .'" name="cambiar-estado" class="button">Cambiar estado</button>
+                </div>
+                
             </form>
             </div>';
         }
@@ -215,6 +218,7 @@ if ($_SESSION['user_id'] != 1) {
     }
 }
     ?>
+    
 </div>
     <?php
         require 'partials/footer.php';

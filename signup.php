@@ -163,23 +163,22 @@ $message = '';
         </nav>
     </header>
 
-    <h3 style="text-align: center; font-size: 2rem">¿Ya tenés una cuenta? <a href="login.php">Iniciar Sesión</a></h3>
-
     <?php if (!empty($message)) : ?>
         <p class="cuenta-creada"> <?= $message ?></p>
     <?php endif; ?>
 
     <div class="form-main-container">
         <div class="form-container">
+            <h3 style="text-align: center; font-size: 2rem">¿Ya tenés una cuenta? <a href="login.php">Iniciar Sesión</a></h3>
             <form action="signup.php" method="POST">
                 <label for="username">Nombre</label><br>
-                <input type="text" name="name"><br>
+                <input type="text" name="name" class="input"><br>
                 <label for="email">E-Mail</label><br>
-                <input type="text" name="email"><br>
+                <input type="text" name="email" class="input"><br>
                 <label for="password">Contraseña</label><br>
-                <input type="password" name="password"><br>
+                <input type="password" name="password" class="input"><br>
                 <label for="password-confirmation">Confirmar contraseña</label><br>
-                <input type="password" name="password-confirmation"><br>
+                <input type="password" name="password-confirmation" class="input"><br>
                 <button type="submit" value="Crear Cuenta" id="submit-button" class="button">Crear cuenta</button>
             </form>
         </div>

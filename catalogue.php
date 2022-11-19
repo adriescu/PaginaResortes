@@ -133,7 +133,7 @@
                     <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
                     <p class="catalogo-p">' . $nombreArr[$i] . '</p>
                     <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
-                    <button type="submit" name="eliminar" value="' . $idArr[$i] . '" class="button">Eliminar</button>
+                    <button type="submit" name="eliminar" value="' . $idArr[$i] . '" class="button card-button">Eliminar</button>
                 </form>
                 </div>
                 ';

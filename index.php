@@ -41,6 +41,7 @@
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-9" rel="stylesheet">
 
 <style>
+
 .button {
  font-size: 3rem;
  cursor: pointer;
@@ -49,7 +50,7 @@
  display: inline-block;
  padding: 12px 24px;
  border: 2px solid #4f4f4f;
- border-radius: 4px;
+ border-radius: 1.5rem;
  transition: all 0.2s ease-in;
  position: relative;
  overflow: hidden;
@@ -104,6 +105,7 @@
  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 </style>
+
 </head>
 <body class="body-index">
     

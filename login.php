@@ -163,14 +163,13 @@
         </nav>
     </header>
 
-    <h3 style="text-align: center; font-size: 2rem">¿No tenés una cuenta? <a href="signup.php">Crear Cuenta</a></h3>
-
     <?php if(!empty($message)): ?>
         <p class="mensaje"><?= $message ?></p>
     <?php endif; ?>
 
     <div class="form-main-container">
         <div class="form-container">
+            <h3 style="text-align: center; font-size: 2rem">¿No tenés una cuenta? <a href="signup.php">Crear Cuenta</a></h3>
             <form action="login.php" method="POST">
                 <label for="username">E-mail</label><br>
                 <input type="text" id="username" name="email" class="input"><br>

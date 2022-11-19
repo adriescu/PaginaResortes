@@ -47,7 +47,6 @@
 /* --- */
 
 .button {
- margin-top: 2rem;
  font-size: 2rem;
  cursor: pointer;
  text-decoration: none;
@@ -55,7 +54,7 @@
  display: inline-block;
  padding: 12px 24px;
  border: 2px solid #4f4f4f;
- border-radius: 4px;
+ border-radius: 1.5rem;
  transition: all 0.2s ease-in;
  position: relative;
  overflow: hidden;
@@ -113,18 +112,33 @@
 /* --- */
 
 .card {
- width: 100%;
- border-radius: 20px;
- background: #f5f5f5;
- position: relative;
- padding: 1.8rem;
- border: 5px solid #c3c6ce;
- transition: 0.5s ease-out;
- overflow: visible;
- margin-bottom: 2rem;
+    width: 100%;
+    border-radius: 20px;
+    background: #f5f5f5;
+    position: relative;
+    padding: 1.8rem;
+    border: 5px solid #c3c6ce;
+    transition: 0.5s ease-out;
+    overflow: visible;
+    margin-bottom: 2rem;
+}
+
+.card-button {
+    display: flex;
+    transform: translate(-50%, 125%);
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.3s ease-out;
 }
 
 .card:hover {
- border-color: darkcyan;
- box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+    border-color: darkcyan;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card:hover .card-button{
+    transform: translate(-50%, 50%);
+    opacity: 1;
 }
