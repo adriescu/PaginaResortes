@@ -9,15 +9,15 @@
 
     require 'database.php';
 
-    if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["foto"]) && ($_POST["foto"] != "") && $sesion == 1){
-        $sql = "INSERT INTO catalogo (nombre, descripcion, foto) VALUES ('" . $_POST["nombre"] . "','" . $_POST["descripcion"] . "','" . $_POST["foto"] . "')";
+    if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["foto"]) && ($_POST["foto"] != "") && isset($_POST["diametroA"]) && isset($_POST["diametroR"]) && isset($_POST["diametroEI"]) && isset($_POST["espacio"]) && isset($_POST["enrollamiento"]) && $sesion == 1){
+        $sql = "INSERT INTO catalogo (nombre, descripcion, diametroA, diametroR, diametroEI, espacio, enrollamiento, foto) VALUES ('" . $_POST["nombre"] . "','" . $_POST["descripcion"] . "','" . $_POST["diametroA"] . "','" . $_POST["diametroR"] . "','" . $_POST["diametroEI"] . "','" . $_POST["espacio"] . "','" . $_POST["enrollamiento"] . "','" . $_POST["foto"] . "')";
         if ($conn->query($sql) === TRUE) {
             $mensaje = "Item creado satisfactoriamente";
         }else{
             $mensaje = "Hubo un error creando el item";
         }
-    }else if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && $sesion == 1){
-        $sql = "INSERT INTO catalogo (nombre, descripcion, foto) VALUES ('" . $_POST["nombre"] . "','" . $_POST["descripcion"] . "','img/catalogo/default.png')";
+    }else if(isset($_POST["nombre"]) && isset($_POST["descripcion"]) && isset($_POST["diametroA"]) && isset($_POST["diametroR"]) && isset($_POST["diametroEI"]) && isset($_POST["espacio"]) && isset($_POST["enrollamiento"]) && $sesion == 1){
+        $sql = "INSERT INTO catalogo (nombre, descripcion, diametroA, diametroR, diametroEI, espacio, enrollamiento, foto) VALUES ('" . $_POST["nombre"] . "','" . $_POST["descripcion"] . "','" . $_POST["diametroA"] . "','" . $_POST["diametroR"] . "','" . $_POST["diametroEI"] . "','" . $_POST["espacio"] . "','" . $_POST["enrollamiento"] . "','" . "img/catalogo/default.png')";
         if ($conn->query($sql) === TRUE) {
             $mensaje = "Item creado satisfactoriamente";
         }else{
@@ -34,19 +34,29 @@
         }
     }
 
-    $sql = "SELECT id, nombre, descripcion, foto FROM catalogo";
+    $sql = "SELECT id, nombre, descripcion, diametroA, diametroR, diametroEI, espacio, enrollamiento, foto FROM catalogo";
     
     $results = $conn->query($sql);
 
     $idArr = [];
     $nombreArr = [];
     $descripcionArr = [];
+    $diametroAArr = [];
+    $diametroRArr = [];
+    $diametroEIArr = [];
+    $espacioArr = [];
+    $enrollamientoArr = [];
     $fotoArr = [];
 
     while($row = $results->fetch_assoc()){
         $idArr[] = $row["id"];
         $nombreArr[] = $row["nombre"];
         $descripcionArr[] = $row["descripcion"];
+        $diametroAArr [] = $row["diametroA"];
+        $diametroRArr [] = $row["diametroR"];
+        $diametroEIArr [] = $row["diametroEI"];
+        $espacioArr [] = $row["espacio"];
+        $enrollamientoArr [] = $row["enrollamiento"];
         $fotoArr[] = $row["foto"];
     }
 
@@ -101,27 +111,60 @@
     </header>
 <div class="catalogo-container">
     <?php
+    if(isset($mensaje)){
+        echo "<p class='catalogo-vacio'>" . $mensaje ."</p>";
+    }
         if($sesion == 1){
             echo '
             <form action="catalogue.php" method="post" class="catalogo-form">
                 <label for="">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" class="input">
+
                 <label for="">Descripción:</label>
                 <input type="text" name="descripcion" id="descripcion" class="input">
+
+                <label for="diametroA">Diametro del alambre</label>
+                <input type="number" name="diametroA" id="diametroA" class="input">
+
+                <label for="diametroR">Diametro del resorte</label>
+                <input type="number" name="diametroR" id="diametroR" class="input">
+
+                <label for="diametroEI">Diametro exterior/interior</label>
+                <input type="number" name="diametroEI" id="diametroEI" class="input">
+
+                <label for="espacio">Espacio entre vueltas</label>
+                <input type="number" name="espacio" id="espacio" class="input">
+
+                <label for="enrollamiento">Enrollamiento</label>
+                <select name="enrollamiento" id="enrollamiento" class="input">
+                    <option value="Derecha">Derecha</option>
+                    <option value="Izquierda">Izquierda</option>
+                </select>
+
                 <label for="">Link de la foto:</label>
                 <input type="text" name="foto" id="foto" class="input">
+
                 <button type="submit" class="button" style="margin-bottom:2rem;">Enviar</button>
             </form>
             ';
         }
         
+    if ($results->num_rows <= 0) {
+        echo "<p class='catalogo-vacio'>No hay nada en el catálogo todavía...</p>";
+    }else{
+
         if ($sesion != 1) {
             for ($i=0; $i < count($idArr); $i++) { 
                 echo '
                 <div class="card">
                     <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
-                    <p class="catalogo-p">' . $nombreArr[$i] . '</p>
-                    <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
+                    <p class="catalogo-p-nombre">' . $nombreArr[$i] . '</p>
+                    <p class="catalogo-p-nombre">' . $descripcionArr[$i] . '</p>
+                    <p class="catalogo-p">Diametro del alambre: ' . $diametroAArr[$i] . '</p>
+                    <p class="catalogo-p">Diametro del resorte: ' . $diametroRArr[$i] . '</p>
+                    <p class="catalogo-p">Diametro exterior/interior: ' . $diametroEIArr[$i] . '</p>
+                    <p class="catalogo-p">Espacio entre vueltas: ' . $espacioArr[$i] . '</p>
+                    <p class="catalogo-p">Enrollamiento: ' . $enrollamientoArr[$i] . '</p>
                 </div>
                 ';
             }
@@ -131,8 +174,13 @@
                 <div class="card">
                 <form action="catalogue.php" method="post">
                     <img src="' . $fotoArr[$i] . '" alt="imagen" class="catalogo-img">
-                    <p class="catalogo-p">' . $nombreArr[$i] . '</p>
-                    <p class="catalogo-p">' . $descripcionArr[$i] . '</p>
+                    <p class="catalogo-p-nombre">' . $nombreArr[$i] . '</p>
+                    <p class="catalogo-p-nombre">' . $descripcionArr[$i] . '</p>
+                    <p class="catalogo-p">Diametro del alambre: ' . $diametroAArr[$i] . '</p>
+                    <p class="catalogo-p">Diametro del resorte: ' . $diametroRArr[$i] . '</p>
+                    <p class="catalogo-p">Diametro exterior/interior: ' . $diametroEIArr[$i] . '</p>
+                    <p class="catalogo-p">Espacio entre vueltas: ' . $espacioArr[$i] . '</p>
+                    <p class="catalogo-p">Enrollamiento: ' . $enrollamientoArr[$i] . '</p>
                     <button type="submit" name="eliminar" value="' . $idArr[$i] . '" class="button card-button">Eliminar</button>
                 </form>
                 </div>
@@ -141,7 +189,7 @@
             
         }
         
-
+    }
     ?>
 </div>
 

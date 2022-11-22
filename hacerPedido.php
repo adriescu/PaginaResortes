@@ -13,7 +13,9 @@
 
     require 'database.php';
 
-    if (!empty($_POST['tipo']) && !empty($_POST['cantidad']) && !empty($_POST['diametroA']) && !empty($_POST['diametroR']) && !empty($_POST['diametroR']) && !empty($_POST['diametroEI']) && !empty($_POST['longitudL']) && !empty($_POST['espacio']) && !empty($_POST['enrollamiento'])){
+if (!empty($_POST["tipo"])) {
+    if($_POST["tipo"] == "Personalizado"){
+        if (!empty($_POST['tipo']) && !empty($_POST['cantidad']) && !empty($_POST['diametroA']) && !empty($_POST['diametroR']) && !empty($_POST['diametroR']) && !empty($_POST['diametroEI']) && !empty($_POST['longitudL']) && !empty($_POST['espacio']) && !empty($_POST['enrollamiento'])){
         $stmt = $conn->prepare("INSERT INTO pedidos (usuario, tipo, cantidad, diametroA, diametroR, diametroEI, longitudL, espacio, enrollamiento, descripcion, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("isiiiiiisss", $usuario, $tipo, $cantidad, $diametroA, $diametroR, $diametroEI, $longitudL, $espacio, $enrollamiento, $descripcion, $estado);
 
@@ -38,13 +40,48 @@
     }else if(!empty($_POST['tipo']) || !empty($_POST['cantidad']) || !empty($_POST['diametroA']) || !empty($_POST['diametroR']) || !empty($_POST['diametroR']) || !empty($_POST['diametroEI']) || !empty($_POST['longitudL']) || !empty($_POST['espacio']) || !empty($_POST['enrollamiento'])){
         $message = 'Por favor complete todos los datos';
     }
+    }else if(!empty($_POST["cantidad"]) && !empty($_POST["longitudL"])){
+        $sql = "SELECT nombre, diametroA, diametroR, diametroEI, espacio, enrollamiento, descripcion FROM catalogo WHERE nombre='" . $_POST["tipo"] . "'";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+
+        $stmt = $conn->prepare("INSERT INTO pedidos (usuario, tipo, cantidad, diametroA, diametroR, diametroEI, longitudL, espacio, enrollamiento, descripcion, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isiiiiiisss", $usuario, $tipo, $cantidad, $diametroA, $diametroR, $diametroEI, $longitudL, $espacio, $enrollamiento, $descripcion, $estado);
+
+        $usuario = $_SESSION["user_id"];
+        $tipo = $row["nombre"];
+        $cantidad = $_POST["cantidad"];
+        $diametroA = $row["diametroA"];
+        $diametroR = $row["diametroR"];
+        $diametroEI = $row["diametroEI"];
+        $longitudL = $_POST["longitudL"];
+        $espacio = $row["espacio"];
+        $enrollamiento = $row["enrollamiento"];
+        $descripcion = $row["descripcion"];
+        $estado = "No listo";
+        
+        if($stmt->execute()){
+            $message = 'Pedido procesado con éxito';
+        } else {
+            $message = 'Hubo un error procesando tu pedido';
+        }
+    }else{
+        $message = 'Por favor complete todos los datos';
+    }
+}
+    
 
     $tiposDeResorte = [];
 
-    $sql = "SELECT nombre FROM catalogo";
+    $sql = "SELECT nombre, diametroA, diametroR, diametroEI, espacio, enrollamiento FROM catalogo";
     $results = $conn->query($sql);
     while($row = $results->fetch_assoc()){
         $tiposDeResorte[] = $row["nombre"];
+        $diametroAArr[] = $row["diametroA"];
+        $diametroRArr[] = $row["diametroR"];
+        $diametroEIArr[] = $row["diametroEI"];
+        $espacioArr[] = $row["espacio"];
+        $enrollamientoAArr[] = $row["enrollamiento"];
     }
 ?>
 
@@ -106,39 +143,39 @@
     <form action="hacerPedido.php" method="POST">
         <label for="tipoDeResorte">Tipo</label>
         <select name="tipo" id="tipoDeResorte" class="input">
+            <option value="Personalizado">Personalizado</option>
             <?php
                 for ($i=0; $i < count($tiposDeResorte); $i++) { 
                     echo '<option value="' . $tiposDeResorte[$i] . '">' . $tiposDeResorte[$i] .'</option>';
                 }
             ?>
-            <option value="Personalizado">Personalizado</option>
         </select>
         <label for="cantidad">Cantidad</label>
         <input type="number" name="cantidad" id="cantidad" class="input">
         
-        <label for="diametroA">Diametro del alambre</label>
-        <input type="number" name="diametroA" id="diametroA" class="input">
+        <label for="diametroA" class="hide">Diametro del alambre</label>
+        <input type="number" name="diametroA" id="diametroA" class="input hide">
 
-        <label for="diametroR">Diametro del resorte</label>
-        <input type="number" name="diametroR" id="diametroR" class="input">
+        <label for="diametroR" class="hide">Diametro del resorte</label>
+        <input type="number" name="diametroR" id="diametroR" class="input hide">
 
-        <label for="diametroEI">Diametro exterior/interior</label>
-        <input type="number" name="diametroEI" id="diametroEI" class="input">
+        <label for="diametroEI" class="hide">Diametro exterior/interior</label>
+        <input type="number" name="diametroEI" id="diametroEI" class="input hide">
 
         <label for="longitudL">Longitud libre</label>
         <input type="number" name="longitudL" id="longitudL" class="input">
 
-        <label for="espacio">Espacio entre vueltas</label>
-        <input type="number" name="espacio" id="espacio" class="input">
+        <label for="espacio" class="hide">Espacio entre vueltas</label>
+        <input type="number" name="espacio" id="espacio" class="input hide">
 
-        <label for="enrollamiento">Enrollamiento</label>
-        <select name="enrollamiento" id="enrollamiento" class="input">
+        <label for="enrollamiento" class="hide">Enrollamiento</label>
+        <select name="enrollamiento" id="enrollamiento" class="input hide">
             <option value="Derecha">Derecha</option>
             <option value="Izquierda">Izquierda</option>
         </select>
 
-        <label for="descripcion">Descripción</label>
-        <input type="text" name="descripcion" id="descripcion" class="input">
+        <label for="descripcion" class="hide">Descripción</label>
+        <input type="text" name="descripcion" id="descripcion" class="input hide">
 
         <button type="submit" value="Enviar pedido" id="boton" class="button">Enviar pedido</button>
     </form>
@@ -147,6 +184,8 @@
     <?php
         require 'partials/footer.php';
     ?>
+
+<script src="js/hacerPedido.js"></script>
 
 </body>
 </html>

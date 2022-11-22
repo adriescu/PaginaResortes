@@ -54,7 +54,7 @@
  transition: all 0.2s ease-in;
  position: relative;
  overflow: hidden;
- color: black;
+ color: #264653;
  z-index: 1;
 }
 
@@ -101,7 +101,7 @@
 
 .button:hover:after {
  top: -45%;
- background-color: darkcyan;
+ background-color: #2a9d8f;
  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 </style>
@@ -153,7 +153,7 @@
                 <p class="welcome">Ya has iniciado sesión</p>
                 <a class="button" href="logout.php">Cerrar Sesión</a>
             <?php else: ?>
-                <a class="button" href="login.php">Iniciar sesión</a>
+                <a class="button" href="login.php">Iniciar Sesión</a>
             <?php endif; ?>
         </div>
     </main>

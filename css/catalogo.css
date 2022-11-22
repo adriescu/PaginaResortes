@@ -5,9 +5,22 @@
     font-size: 2rem;
     text-align: center;
     align-items: center;
-    min-height: 80vh;
+    min-height: 80vh; 
 }
 
+.catalogo-vacio{
+  font-size: 3rem;
+  margin: 5rem 0;
+}
+
+.catalogo-p-nombre{
+  font-size: 2rem;
+  text-align: center;
+}
+.catalogo-p{
+  font-size: 1rem;
+  text-align: left;
+}
 .catalogo-div{
     margin-bottom: 7%;
 }
@@ -24,6 +37,11 @@
 
 .catalogo-form label{
     font-size: 2rem;
+}
+
+.catalogo-form select{
+  width: 100%;
+  font-size: 2rem;
 }
 
 /* #boton{
@@ -147,8 +165,8 @@
 }
 
 .card:hover {
- border-color: darkcyan;
- box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ border-color: #2a9d8f;
+ box-shadow: 0 4px 100px 30px rgba(0, 0, 0, 0.25);
 }
 
 .card:hover .card-button{

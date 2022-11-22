@@ -60,8 +60,6 @@
             <p>Una vez iniciada sesión se pueden hacer pedidos; en la sección de pedidos se pueden ver todos los pedidos realizados y si están listos o no.</p>
             <h3>¿Son necesarios los resortes?</h3>
             <p>Totalmente. La Oranización Mundial de la Salud recomienda tener por lo menos 10 resortes.</p>
-            <h3>¿Cuanto tiempo llevó hacer esta página?</h3>
-            <p>Aproximadamente unos 37 años sin contar años bisiestos.</p>
         </div>
     </main>
 

@@ -70,7 +70,7 @@
  display: inline-block;
  padding: 12px 24px;
  border: 2px solid #4f4f4f;
- border-radius: 4px;
+ border-radius: 1rem;
  transition: all 0.2s ease-in;
  position: relative;
  overflow: hidden;
