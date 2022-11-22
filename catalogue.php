@@ -129,7 +129,7 @@
                 <label for="diametroR">Diametro del resorte</label>
                 <input type="number" name="diametroR" id="diametroR" class="input">
 
-                <label for="diametroEI">Diametro exterior/interior</label>
+                <label for="diametroEI">Diametro interior</label>
                 <input type="number" name="diametroEI" id="diametroEI" class="input">
 
                 <label for="espacio">Espacio entre vueltas</label>
@@ -162,7 +162,7 @@
                     <p class="catalogo-p-nombre">' . $descripcionArr[$i] . '</p>
                     <p class="catalogo-p">Diametro del alambre: ' . $diametroAArr[$i] . '</p>
                     <p class="catalogo-p">Diametro del resorte: ' . $diametroRArr[$i] . '</p>
-                    <p class="catalogo-p">Diametro exterior/interior: ' . $diametroEIArr[$i] . '</p>
+                    <p class="catalogo-p">Diametro interior: ' . $diametroEIArr[$i] . '</p>
                     <p class="catalogo-p">Espacio entre vueltas: ' . $espacioArr[$i] . '</p>
                     <p class="catalogo-p">Enrollamiento: ' . $enrollamientoArr[$i] . '</p>
                 </div>
@@ -178,7 +178,7 @@
                     <p class="catalogo-p-nombre">' . $descripcionArr[$i] . '</p>
                     <p class="catalogo-p">Diametro del alambre: ' . $diametroAArr[$i] . '</p>
                     <p class="catalogo-p">Diametro del resorte: ' . $diametroRArr[$i] . '</p>
-                    <p class="catalogo-p">Diametro exterior/interior: ' . $diametroEIArr[$i] . '</p>
+                    <p class="catalogo-p">Diametro interior: ' . $diametroEIArr[$i] . '</p>
                     <p class="catalogo-p">Espacio entre vueltas: ' . $espacioArr[$i] . '</p>
                     <p class="catalogo-p">Enrollamiento: ' . $enrollamientoArr[$i] . '</p>
                     <button type="submit" name="eliminar" value="' . $idArr[$i] . '" class="button card-button">Eliminar</button>

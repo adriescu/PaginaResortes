@@ -159,7 +159,7 @@ if (!empty($_POST["tipo"])) {
         <label for="diametroR" class="hide">Diametro del resorte</label>
         <input type="number" name="diametroR" id="diametroR" class="input hide">
 
-        <label for="diametroEI" class="hide">Diametro exterior/interior</label>
+        <label for="diametroEI" class="hide">Diametro interior</label>
         <input type="number" name="diametroEI" id="diametroEI" class="input hide">
 
         <label for="longitudL">Longitud libre</label>
